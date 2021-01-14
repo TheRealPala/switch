@@ -22,16 +22,15 @@ public class Reader {
         Scanner myReader = new Scanner(myObj);
         while (myReader.hasNextLine()){
             String data = myReader.nextLine();
-            String [] sp = data.split("\t", 3);
+            String [] sp = data.split("\t", 3); //divide la stringa letta dal file in 3 sottostringhe: tutte le volte che incontra un '\t', divide la stringa e la aggiunge ad una cella dell'array.
             p.add(sp[0]);
-            macs.add(sp[2]);
             macd.add(sp[1]);
+            macs.add(sp[2]);
         }
         myReader.close();
       } 
       catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
-            e.printStackTrace();
         }
     }
 }

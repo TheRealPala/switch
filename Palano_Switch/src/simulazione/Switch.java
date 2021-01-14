@@ -21,19 +21,11 @@ public class Switch {
         macd = new Vector();
         porta = new Vector();
         port = new Vector();
-        new Reader(porta, macs, macd); //lettura da file
+        new Reader(porta, macs, macd); //lettura da file (mette le porte lette dentro porta, i mac sorgenti dentro macs ed i mac destinatari dentro macd) 
         nport = calcPorte(); //calcolo numero effettivo di porte e salvataggio di quest'ultime dentro port[]
         t = new Tabella(porta, macs, macd, nport, port);
     }
-    /*
-    private void stampa(){
-        for(int i = 0; i < macs.size(); ++i){
-            System.out.println("Messaggio " + ( i + 1) + ": ");
-            System.out.println("Porta: " + porta.get(i) + "\nMac sorgente: " + macs.get(i) + "\nMac destinatario: " + macd.get(i));
-        }
-    }
-    */
-    private int calcPorte(){ //calcola il numero effettivo di porte, le salva in una collections dinamica: port[] e ritorna il numero di porte calcolato.
+    private int calcPorte(){ //calcola il numero effettivo di porte, le salva in una collections dinamica: port[] e ritorna il numero effettivo di quest'ultime.
         int n = 1;
         port.add(porta.elementAt(0));
         boolean flag = false;
@@ -49,6 +41,19 @@ public class Switch {
                 port.add(str);
             } 
         }
+        bubblesort();
         return n;
     } 
+    private void bubblesort(){ //mette in ordine crescente le porte salvate da calcPorte(): l'ordinamento viene fatto perchè, a livello visivo, l'output finale risulta più intuitivo ed estetiamente migliore.
+        String tmp = "";
+        for(int i = 0; i < port.size(); ++i){
+            for(int j = 0; j < port.size(); ++j){
+                if(Integer.parseInt(port.elementAt(i))<= Integer.parseInt(port.elementAt(j))){
+                    tmp = port.elementAt(i);
+                    port.set(i, port.elementAt(j));
+                    port.set(j, tmp);  
+                }
+            }
+        }
+    }
 }

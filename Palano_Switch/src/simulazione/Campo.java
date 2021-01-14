@@ -9,7 +9,12 @@ import java.util.*;
  *
  * @author apala
  */
-public class Campo {
+public class Campo { 
+    /*
+    Singolo oggetto campo che va a comporre la tabella dello switch, contiene due attributi :
+        La porta dalla quale arriva il messaggio.
+        Un array dinamico che gestisce i mac sorgenti associati alla porta (in questo modo riesco a gestire anche il caso in cui più mac corrispondano alla stessa porta)
+    */
     private String porta;
     private Vector<String>src;
     Campo(){
