@@ -24,8 +24,8 @@ public class Reader {
             String data = myReader.nextLine();
             String [] sp = data.split("\t", 3);
             p.add(sp[0]);
-            macs.add(sp[1]);
-            macd.add(sp[2]);
+            macs.add(sp[2]);
+            macd.add(sp[1]);
         }
         myReader.close();
       } 
