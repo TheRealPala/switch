@@ -21,12 +21,12 @@ public class Switch {
         macd = new Vector();
         porta = new Vector();
         port = new Vector();
-        new Reader(porta, macs, macd); //lettura da file (mette le porte lette dentro porta, i mac sorgenti dentro macs ed i mac destinatari dentro macd) 
+        new Reader(porta, macs, macd); //lettura da file (mette le porte lette dentro porta, i mac sorgenti dentro macs ed i mac destinatari dentro macd)
         nport = calcPorte(); //calcolo numero effettivo di porte e salvataggio di quest'ultime dentro port[]
         t = new Tabella(porta, macs, macd, nport, port);
     }
-    private int calcPorte(){ //calcola il numero effettivo di porte, le salva in una collections dinamica: port[] e ritorna il numero effettivo di quest'ultime.
-        int n = 1;
+    private int calcPorte(){ //analizza le porte dei messaggi, estrapola quali sono i numeri delle porte, li salva in una collections dinamica: port[] e ritorna il numero effettivo di quest'ultime.
+        int n = 1;          // Il metodo potrebbe ottenere anche il numero effettivo delle porte ma, dopo l'ultima modifica, questo dato viene passato come parametro. 
         port.add(porta.elementAt(0));
         boolean flag = false;
         for(int i = 1; i < porta.size(); ++i){
